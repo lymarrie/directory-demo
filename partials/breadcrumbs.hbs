@@ -1,0 +1,7 @@
+<div class="py-5 text-2xl flex justify-right gap-x-3">
+    {{#each c_parents}}
+        <a href="/{{this.slug}}" class="font-bold hover:underline">{{this.name}}<a/>
+        <span class="pr-5"> > </span>
+    {{/each }}
+    <span class="">{{name}}</span>
+</div>

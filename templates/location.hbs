@@ -1,0 +1,56 @@
+---
+{
+    "stream": {
+        "$id": "locations",
+        "source": "knowledgeGraph",
+        "destination": "pages",
+        "filter" : {
+            "entityTypes": [
+                "location"
+            ]
+        },
+        "fields": [
+            "id", 
+            "uid",
+            "meta", 
+            "name",
+            "slug",
+            "c_parents.name",
+            "c_parents.meta",
+            "c_parents.slug",
+            "c_parents.id"
+        ],
+        "localization": {
+            "locales": ["en"]
+        }
+    },
+    "urlFormat": "{{slug}}"
+}
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{>head }}
+        <title>{{name}}</title>
+        {{>schema}}
+        <link rel="shortcut icon" type="image/jpg" href="/images/yext-favicon.png"/>
+    </head>
+    <body>      
+            <div class="w-full">
+                {{>nav}}
+                {{>hero}}
+                <div class="centered-container">
+                    {{>breadcrumbs}}
+                    <div class="section space-y-5">
+                        <h1>Entity Name: <span class="font-normal">{{name}}</span></h1>
+                        <h2>Entity Type: <span class="font-normal">{{meta.entityType.id}}</span></h2>
+                    </div>
+                </div>
+                <div class="w-full bg-gray-100">
+                    <div class="centered-container">
+                        {{>footer}}
+                    </div>
+                </div>
+            </div>
+    </body> 
+</html>

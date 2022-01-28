@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+
+
+/* Header Styling */
+
+.topnav #myLinks {
+  display: none;
+}
+.headerLink {
+  @apply font-semibold;
+}
+
+
+/* Body Styling */
+
+body {
+  @apply bg-gray-50 text-ll-blue;
+}
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+h2 {
+  @apply text-2xl font-bold;
+}
+
+h3 {
+  @apply text-lg font-bold;
+}
+
+h4 {
+  @apply text-lg font-bold;
+}
+
+.hero {
+  background:url(images/background.jpg);
+  background-position: center;
+}
+
+.centered-container {
+  @apply mx-auto px-5 md:px-14 max-w-screen-xl;
+}
+
+.skeleton {
+  @apply bg-gray-300 animate-pulse rounded-sm;
+}
+
+.section {
+  @apply mt-8 mb-16;
+}
+
+.btn {
+  @apply border px-4 py-2 rounded transform hover:-translate-y-1 ease-in-out transition-all cursor-pointer hover:shadow-lg  text-center focus:outline-none flex gap-2 items-center justify-center;
+}
+
+.btn-primary {
+  @apply bg-ll-red text-white border-ll-red focus:ring-2 focus:bg-red-900;
+}
+
+.btn-secondary {
+  @apply text-ll-red border-ll-red hover:bg-white focus:ring-2 focus:ring-ll-red focus:bg-red-100;
+}
+
+.btn-link {
+  @apply hover:bg-gray-100 focus:ring-2 focus:bg-gray-100;
+}
+
+
+@tailwind utilities;
