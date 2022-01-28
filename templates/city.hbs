@@ -15,14 +15,15 @@
             "meta", 
             "name",
             "slug",
+            "c_parents.name",
+            "c_parents.meta",
+            "c_parents.slug",
+            "c_parents.id",
             "c_children.name",
             "c_children.meta",
             "c_children.slug",
             "c_children.id",
-            "c_parents.name",
-            "c_parents.meta",
-            "c_parents.slug",
-            "c_parents.id"
+            "c_children.c_children"
         ],
         "localization": {
             "locales": ["en"]
@@ -50,11 +51,12 @@
                         <h2>Entity Type: <span class="font-normal">{{meta.entityType.id}}</span></h2>
                     </div>
                     <div class="section">
-                        <h2 class="py-5">Children:</h2>
-                        <div class="children grid grid-cols-3">
-                            {{#each c_children}}
-                                <div class="text-2xl">
-                                    <a href="/{{this.slug}}">{{this.name}}</a>
+                        <div class="children">
+                            {{#each (sortBy c_children "name")}}
+                                <div class="font-semibold text-2xl text-blue-900">
+                                    <a href="/{{this.slug}}" class=" hover:underline">
+                                        {{this.name}}
+                                    </a>
                                 </div>
                             {{/each}}
                         </div>
