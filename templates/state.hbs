@@ -46,26 +46,30 @@
                 {{>hero}}
                 <div class="centered-container">
                     {{>breadcrumbs}}
-                    <div class="section space-y-5">
-                        <h1>Entity Name: <span class="font-normal">{{name}}</span></h1>
-                        <h2>Entity Type: <span class="font-normal">{{meta.entityType.id}}</span></h2>
-                    </div>
-                    <div class="section">
-                        <div class="children">
+                    <div class="section grid grid-cols-3 gap-x-8">
+                        <div class="space-y-5">
+                            <h1>Welcome to <span class="italic underline">{{name}}</span></h1>
+                            <div>This page is powered by a <span class="font-extrabold italic">{{meta.entityType.id}}</span> entity!</div>
+                        </div>
+                        <div class="children px-8">
+                            <div class="text-2xl font-bold pb-3">Cities:</div>
                             {{#each (sortBy c_children "name")}}
                                 <div class="font-semibold text-2xl text-blue-900">
                                     {{!-- Skip level if city only has 1 child --}}
                                     {{#if (compare (length c_children) 1) }}
-                                        <a href="/{{c_children.[0].slug}}" class=" hover:underline">
+                                        <a href="/{{c_children.[0].slug}}" class="text-xl pl-3 hover:underline">
                                             {{this.name}} ({{length c_children}})
                                         </a>
                                     {{else}}
-                                        <a href="/{{this.slug}}" class=" hover:underline">
+                                        <a href="/{{this.slug}}" class="text-xl pl-3 hover:underline">
                                             {{this.name}} ({{length c_children}})
                                         </a>                
                                     {{/if}}
                                 </div>
                             {{/each}}
+                        </div>
+                        <div class="">
+                            <img src="https://i.insider.com/538e0f6aeab8eafb1a248e8d?width=1000&format=jpeg&auto=webp" width="600px">
                         </div>
                     </div>
                 </div>
