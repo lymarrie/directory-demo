@@ -6,6 +6,13 @@ https://banner-childish-destiny.sbx.pgsdemo.com/
 This repository powers a location directory based on [sandbox account ID 2992605](https://sandbox.yext.com/s/2992605/entities2#).
 This repo aims to help you visualize the interaction between a developer's front-end code vs. a directory structure in the Knowledge Graph.
 
+#### Steps to Replicate (Command Line)
+- `git clone https://github.com/lymarrie/directory-demo`
+- `yext init 2992605 -u sandbox`
+- `yext sites generate-test-data`
+  - (note, you will have to change the [locales array here](https://github.com/lymarrie/directory-demo/blob/main/templates/location.hbs#L26) to `["en"]` in order for this command to work... unknown bug) 
+- `yext sites develop`
+
 ## Background 
 At a high level, the Directory Manager:
 1. Accepts a set of location entities as input ("base entities")
