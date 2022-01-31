@@ -48,8 +48,14 @@
                     {{>breadcrumbs}}
                     <div class="section grid grid-cols-3 gap-x-8">
                         <div class="space-y-5">
-                            <h1>Welcome to <span class="italic underline">{{name}}</span></h1>
-                            <div>This page is powered by a <span class="font-extrabold italic">{{meta.entityType.id}}</span> entity!</div>
+                            {{#if (compare name "United States")}}
+                                <h1>Welcome to <span class="italic underline">the {{name}}!</span></h1>
+                            {{else if (compare name "United Kingdom")}}
+                                <h1>Welcome to <span class="italic underline">the {{name}}!</span></h1>
+                            {{else}}
+                                <h1>Welcome to <span class="italic underline">{{name}}!</span></h1>
+                            {{/if}}
+                            <div>This page is powered by a <span class="font-extrabold italic">{{meta.entityType.id}}</span> entity.</div>
                         </div>
                         <div class="children px-8">
                             {{#each (sortBy c_children "name")}}
