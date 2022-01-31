@@ -28,18 +28,54 @@ As such, the resulting Knowledge Graph directory consists of the following entit
 - ce_city (city.hbs)
 - location (location.hbs)
 
+### Stream / Page Template Configuration
+Some important custom fields to call out are:
+- c_parents (array containing full ancestry of parents for each entity)
+  - e.g. c_parents for Yext Headquarters = `[root, US, New York, NYC]`
+- c_children (array containing each entity's direct children - i.e. entities one level below it in terms of the directory tree)
+  - e.g. c_children for New York State = `[New York City]`
+  - c_children for United States = `[California, Florida, New York]`
+
 ### Directory Features
 #### Breadcrumbs
-If you navigate to [partials/breadcrumbs.hbs](https://github.com/lymarrie/directory-demo/blob/main/partials/breadcrumbs.hbs), you can see my implementation of breadcrumbs. Each entity profile from Streams will include a "parents" array that contains the full ancestry of that entity. Therefore, all that needs to be done is iterate through the array - start to finish - to generate breadcrumbs.  
+If you navigate to [partials/breadcrumbs.hbs](https://github.com/lymarrie/directory-demo/blob/main/partials/breadcrumbs.hbs), you can see my implementation of breadcrumbs. Each entity profile from Streams will include a "parents" array that contains the full ancestry of that entity. Therefore, all that needs to be done is iterate through the array - start to finish - to generate breadcrumbs.
+
+```
+<div class="py-5 text-2xl flex justify-right gap-x-3">
+    {{#each c_parents}}
+        <a href="/{{this.slug}}" class="font-bold hover:underline">{{this.name}}<a/>
+        <span class="pr-5"> > </span>
+    {{/each}}
+    <span class="">{{name}}</span>
+</div>
+```
 
 #### Skip-Level Links
-There are existing implementations configured to "skip a level" if a link on a page only has a single child entity. One example is [Taco Bell](https://locations.tacobell.com/ct.html); upon clicking "Stamford", you are directed straight to the location entity in Stamford (rather than to a Stamford city page - which can still be accessed via URL).
+- There are existing implementations configured to "skip a level" if a link on a page only has a single child entity. One example is [Taco Bell](https://locations.tacobell.com/ct.html); upon clicking "Stamford", you are directed straight to the location entity in Stamford (rather than to a Stamford city page - which can still be accessed via URL).
+  - This type of functionality is easily configurable in Sites as well - and can be seen on [line 59 of my state.hbs file](https://github.com/lymarrie/directory-demo/blob/main/templates/state.hbs#L59).
+```    
+{{!-- Skip level if city only has 1 child --}}
+    {{#if (compare (length c_children) 1) }}
+        <a href="/{{c_children.[0].slug}}" class="text-xl pl-3 hover:underline">
+            {{this.name}} ({{length c_children}})
+        </a>
+    {{else}}
+        <a href="/{{this.slug}}" class="text-xl pl-3 hover:underline">
+            {{this.name}} ({{length c_children}})
+        </a>                
+    {{/if}}
+```
+- You can observe two behaviors I've implemented for fun from the [countries page](https://github.com/lymarrie/directory-demo/blob/main/templates/country.hbs) as well:
+  - Clicking on a city in the UK kicks you straight to the leaf page
+  - Clicking on a city in Germany takes you to a city page insteaad 
 
-This type of functionality is easily configurable in Sites as well - and can be seen on [line 59 of my state.hbs file](https://github.com/lymarrie/directory-demo/blob/main/templates/state.hbs#L59).
-
-To show all possible implementation styles, you can observe the same behavior from the [countries page](https://github.com/lymarrie/directory-demo/blob/main/templates/country.hbs) as well:
-- Clicking on a city in the UK kicks you straight to the leaf page
-- Clicking on a city in Germany takes you to a city page insteaad 
+### Sorting
+This is a small feature, but you'll notice all alphabetical sorting of locations is performed at the [template level](https://github.com/lymarrie/directory-demo/blob/main/templates/country.hbs#L68).
+```
+{{#each (sortBy c_children "name")}}
+   ... pseudo code listing all children
+{{/each}}
+```
 
 ### One Caveat
 - The Knowledge Graph in the account was created manually by me, not by the Directory Manager. I have structured the graph more or less identically to the expected output of the Directory Manager 
