@@ -1,12 +1,12 @@
 # Sites - Location Directory Demo
 https://banner-childish-destiny.sbx.pgsdemo.com/
 
-## Author: Luc Yuki Marrie
+### Author: Luc Yuki Marrie
 
 This repository powers a location directory based on [sandbox account ID 2992605](https://sandbox.yext.com/s/2992605/entities2#).
 This repo aims to help you visualize the interaction between a developer's front-end code vs. a directory structure in the Knowledge Graph.
 
-### Background
+## Background 
 At a high level, the Directory Manager:
 1. Accepts a set of location entities as input ("base entities")
 2. Creates several CaC resources based on user configuration - such as entity types, entities, fields, saved filters, streams
@@ -15,8 +15,12 @@ At a high level, the Directory Manager:
 
 The end result is a "directory" of entities. 
 
-### Knowledge Graph
-The example Knowledge Graph ([sandbox account ID 2992605](https://sandbox.yext.com/s/2992605/entities2#)) contains 7 entities:
+## Knowledge Graph
+<div>
+  <img src="https://a.mktgcdn.com/p/Prm0afEGm0AbjpossLKl_xwAiLQa86W5ye-kBDW4XGQ/100x100.png">
+</div>
+
+The example Knowledge Graph contains 7 entities:
 - 5 in the United States
 - 1 in the U.K.
 - 1 in Germany
@@ -28,7 +32,8 @@ As such, the resulting Knowledge Graph directory consists of the following entit
 - ce_city (city.hbs)
 - location (location.hbs)
 
-### Stream / Page Template Configuration
+## Stream / Page Template Configuration
+<div><img src="https://a.mktgcdn.com/p/oDWUmHKDb6fLTy_U9VEgPcJqpsVnHLU58CoFLe_Q2c4/100x100.png"></div>
 Some important custom fields to call out are:
 - c_parents (array containing full ancestry of parents for each entity)
   - e.g. c_parents for Yext Headquarters = `[root, US, New York, NYC]`
@@ -36,7 +41,7 @@ Some important custom fields to call out are:
   - e.g. c_children for New York State = `[New York City]`
   - c_children for United States = `[California, Florida, New York]`
 
-### Directory Features
+## Directory Features
 #### Breadcrumbs
 If you navigate to [partials/breadcrumbs.hbs](https://github.com/lymarrie/directory-demo/blob/main/partials/breadcrumbs.hbs), you can see my implementation of breadcrumbs. Each entity profile from Streams will include a "parents" array that contains the full ancestry of that entity. Therefore, all that needs to be done is iterate through the array - start to finish - to generate breadcrumbs.
 
@@ -78,4 +83,5 @@ This is a small feature, but you'll notice all alphabetical sorting of locations
 ```
 
 ### One Caveat
+<div><img src="https://i.ytimg.com/vi/XPib9KoFYw4/maxresdefault.jpg" width="300px"></div>
 - The Knowledge Graph in the account was created manually by me, not by the Directory Manager. I have structured the graph more or less identically to the expected output of the Directory Manager 
