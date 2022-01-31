@@ -33,11 +33,11 @@ The example Knowledge Graph contains 7 entities:
 - 1 in Germany
 
 As such, the resulting Knowledge Graph directory consists of the following entity types - and appropriately, you will find a Handlebars template in this repository dedicated to each one:
-- ce_root (index.html)
-- ce_country (country.hbs)
-- ce_state (state.hbs)
-- ce_city (city.hbs)
-- location (location.hbs)
+- ce_root (`index.hbs`)
+- ce_country (`country.hbs`)
+- ce_state (`state.hbs`)
+- ce_city (`city.hbs`)
+- location (`location.hbs`)
 
 ## Stream / Page Template Configuration
 <div><img src="https://a.mktgcdn.com/p/oDWUmHKDb6fLTy_U9VEgPcJqpsVnHLU58CoFLe_Q2c4/100x100.png"></div>
