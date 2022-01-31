@@ -4,7 +4,7 @@ https://banner-childish-destiny.sbx.pgsdemo.com/
 ## Author: Luc Yuki Marrie
 
 This repository powers a location directory based on [sandbox account ID 2992605](https://sandbox.yext.com/s/2992605/entities2#).
-This repo should give you a good idea of the interaction between the developer's front-end code and the Knowledge Graph.
+This repo aims to help you visualize the interaction between a developer's front-end code vs. a directory structure in the Knowledge Graph.
 
 ### Background
 At a high level, the Directory Manager:
