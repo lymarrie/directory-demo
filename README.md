@@ -92,6 +92,19 @@ This is a small feature, but you'll notice all alphabetical sorting of locations
 {{/each}}
 ```
 
+### i18n Pages
+- The Knowledge Graph also contains Spanish and German language profiles for entities across each level of the directory.
+- For example, if you view the [United States entity](https://sandbox.yext.com/s/2992605/entity/edit3?entityIds=16838628), you can examine the alternate language profiles towards the bottom-right.
+- To make sure this Graph plays nicely with the frontend code:
+  - I added `[[localeCode]]` as an embedded value for the slug field on the primary language profile for all entities
+    - e.g. Slug = us/ny/new-york/loc1-[[localeCode]].html
+  - At the template level, ensured that the localization array reflected the language profiles defined in the Knowledge Graph
+    - e.g. `"locales": ["en", "es", "de"]`
+
+Putting that all together, Knowledge Graph and Streams ensure that any slug values used as hrefs on the Pages side are embedded with the appropriate locale codes. As such, you can traverse the entire directory site in a single locale with ease. Refer to the Spanish and German versions of the site below:
+- [https://banner-childish-destiny.sbx.pgsdemo.com/index-es.html](https://banner-childish-destiny.sbx.pgsdemo.com/index-es.html)
+- [https://banner-childish-destiny.sbx.pgsdemo.com/index-de.html](https://banner-childish-destiny.sbx.pgsdemo.com/index-de.html)
+
 ### One Caveat
 <div><img src="https://i.ytimg.com/vi/XPib9KoFYw4/maxresdefault.jpg" width="300px"></div>
 - The Knowledge Graph in the account was created manually by me, not by the Directory Manager. I have structured the graph more or less identically to the expected output of the Directory Manager 
