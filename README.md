@@ -40,7 +40,10 @@ As such, the resulting Knowledge Graph directory consists of the following entit
 - location (`location.hbs`)
 
 ## Stream / Page Template Configuration
-<div><img src="https://a.mktgcdn.com/p/oDWUmHKDb6fLTy_U9VEgPcJqpsVnHLU58CoFLe_Q2c4/100x100.png"></div>
+<div>
+  <img src="https://a.mktgcdn.com/p/oDWUmHKDb6fLTy_U9VEgPcJqpsVnHLU58CoFLe_Q2c4/100x100.png">
+</div>
+
 Some important custom fields to call out are:
 - c_parents (array containing full ancestry of parents for each entity)
   - e.g. c_parents for Yext Headquarters = `[root, US, New York, NYC]`
